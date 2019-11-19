@@ -1,12 +1,12 @@
-# SSH and SCP in GITHUB's Action
+# SSH and SCP Setup in GITHUB's Action
 
-Execute commands and upload files to remove server in pure bash script
+Setup ssh agent for both ssh and scp. Script can be run before and after scp operation has been completed
 
 ## USAGE
 
 ```yml
-- name: Test
-  uses: alinz/temp_actions/test@master
+- name: Operations
+  uses: alinz/ssh-scp-action@master
   env:
     HELLO: cool
     MESSAGE: hello world
@@ -15,7 +15,6 @@ Execute commands and upload files to remove server in pure bash script
     host: example.com
     port: 22
     user: john
-
     # runs this on remove server
     ssh_before: |
       rm -rf sample1.dat sample2.dat
