@@ -1,0 +1,26 @@
+name: 'SSH and SCP Setup'
+description: 'Executing remote ssh and scp commands'
+author: 'Ali Najafizadeh'
+inputs:
+  host:
+    description: 'ssh remote host'
+  port:
+    description: 'ssh remote port'
+    default: 22
+  user:
+    description: 'ssh user'
+  key:
+    description: 'content of ssh private key. ex raw content of ~/.ssh/id_rsa'
+  ssh_before:
+    description: 'execute commands before SCP'
+  scp:
+    description: 'scp local and remote'
+  ssh_after:
+    description: 'execute commands after SCP'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+
+branding:
+  icon: 'terminal'
+  color: 'gray-dark'
