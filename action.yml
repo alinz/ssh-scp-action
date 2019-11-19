@@ -17,6 +17,9 @@ inputs:
     description: 'scp local and remote'
   ssh_after:
     description: 'execute commands after SCP'
+  debug:
+    description: 'show debug information'
+    default: false
 runs:
   using: 'docker'
   image: 'Dockerfile'
