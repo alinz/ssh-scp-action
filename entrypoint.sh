@@ -41,7 +41,7 @@ executeSSH() {
     fi
   done <<< $LINES
 
-  if [ -v $INPUT_DEBUG ]; then 
+  if [ -v "$INPUT_DEBUG" ]; then 
     echo "ssh -o StrictHostKeyChecking=no -p ${INPUT_PORT:-22} $INPUT_USER@$INPUT_HOST '$COMMANDS'"
   fi
 
@@ -61,7 +61,7 @@ executeSCP() {
 
     # scp will fail if COMMAND is empty, this condition protects scp
     if [[ $COMMAND = *[!\ ]* ]]; then
-      if [ -v $INPUT_DEBUG ]; then 
+      if [ -v "$INPUT_DEBUG" ]; then 
         echo "'$COMMAND'"
       fi
 
@@ -72,26 +72,26 @@ executeSCP() {
 
 setupSSH
 
-if [ -v $INPUT_DEBUG ]; then 
+if [ -v "$INPUT_DEBUG" ]; then 
   echo "=== ssh_before ==="
 fi
 executeSSH "$INPUT_SSH_BEFORE"
-if [ -v $INPUT_DEBUG ]; then 
+if [ -v "$INPUT_DEBUG" ]; then 
   echo "=== ssh_before ==="
 fi
 
-if [ -v $INPUT_DEBUG ]; then 
+if [ -v "$INPUT_DEBUG" ]; then 
   echo "=== scp ==="
 fi
 executeSCP "$INPUT_SCP"
-if [ -v $INPUT_DEBUG ]; then 
+if [ -v "$INPUT_DEBUG" ]; then 
   echo "=== scp ==="
 fi
 
-if [ -v $INPUT_DEBUG ]; then 
+if [ -v "$INPUT_DEBUG" ]; then 
   echo "=== ssh_after ==="
 fi
 executeSSH "$INPUT_SSH_AFTER"
-if [ -v $INPUT_DEBUG ]; then 
+if [ -v "$INPUT_DEBUG" ]; then 
   echo "=== ssh_after ==="
 fi
