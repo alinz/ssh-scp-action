@@ -22,10 +22,10 @@ setupSSH() {
 
 executeSSH() {
   local LINES=$1
-  local COMMAND=
+  local COMMAND=""
 
   # holds all commands separated by semi-colon
-  local COMMANDS=
+  local COMMANDS=""
 
   # this while read each commands in line and
   # evaluate each line agains all environment variables
@@ -64,6 +64,10 @@ executeSCP() {
 }
 
 setupSSH
+echo "+++++++++++++++++++RUNNING BEFORE SSH+++++++++++++++++++"
 executeSSH "$INPUT_SSH_BEFORE"
+echo "+++++++++++++++++++RUNNING BEFORE SSH+++++++++++++++++++"
 executeSCP "$INPUT_SCP"
+echo "+++++++++++++++++++RUNNING AFTER SSH+++++++++++++++++++"
 executeSSH "$INPUT_SSH_AFTER"
+echo "+++++++++++++++++++RUNNING AFTER SSH+++++++++++++++++++"
