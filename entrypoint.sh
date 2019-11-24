@@ -58,6 +58,7 @@ executeSCP() {
 
     # scp will fail if COMMAND is empty, this condition protects scp
     if [[ $COMMAND = *[!\ ]* ]]; then
+      echo "scp -r -o StrictHostKeyChecking=no $COMMAND"
       scp -r -o StrictHostKeyChecking=no $COMMAND
     fi
   done <<< $LINES
@@ -67,7 +68,9 @@ setupSSH
 echo "+++++++++++++++++++RUNNING BEFORE SSH+++++++++++++++++++"
 executeSSH "$INPUT_SSH_BEFORE"
 echo "+++++++++++++++++++RUNNING BEFORE SSH+++++++++++++++++++"
+echo "+++++++++++++++++++RUNNING SCP+++++++++++++++++++"
 executeSCP "$INPUT_SCP"
+echo "+++++++++++++++++++RUNNING SCP+++++++++++++++++++"
 echo "+++++++++++++++++++RUNNING AFTER SSH+++++++++++++++++++"
 executeSSH "$INPUT_SSH_AFTER"
 echo "+++++++++++++++++++RUNNING AFTER SSH+++++++++++++++++++"
