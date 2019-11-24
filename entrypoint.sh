@@ -41,6 +41,7 @@ executeSSH() {
     fi
   done <<< $LINES
 
+  echo "$COMMANDS"
   ssh -o StrictHostKeyChecking=no -p ${INPUT_PORT:-22} $INPUT_USER@$INPUT_HOST "$COMMANDS"
 }
 
